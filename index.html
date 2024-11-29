@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .formato-base{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(150, 150, 150);
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .formato-submit{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            padding: 10px;
+        }
+    
+        label{
+            margin: 5px;
+            padding: 5px;
+        }
+    
+        input{
+            align-items: center;
+            margin: 10px;
+            padding: 10px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="formato-base"><b>Cuadro de texto</b>
+        <label for="texto">Texto a introducir</label>
+        <input type="text" name="" id="texto" placeholder="Introduzca un texto">
+    </div>
+    <div class="formato-base"><b>Cuadro de contraseña</b>
+        <label for="password">Contraseña a introducir</label>
+        <input type="password" name="" id="password" placeholder="***********">
+    </div>
+    <div class="formato-base"><b>Cuadro de email</b>
+        <label for="email">Introduzca su email (Nota* su email sera validado)</label>\
+        <input type="email" name="" id="email" placeholder="ejemplo@gmail.com">
+    </div>
+    <div class="formato-base"><b>Cuadro de ingreso de URL</b>
+        <label for="URL">Ingrese un enlace (Nota* su enlace sera validado)</label>
+        <input type="url" name="" id="URL" placeholder="https://www.google.com/?hl=es">
+    </div>
+    <div class="formato-base"><b>Cuadro de ingreso de numeros</b>
+        <label for="numero">Ingrese un numero (Nota* tiene como numero maximo: 10)</label>
+        <input type="number" name="" id="numero" max= "10" placeholder="6">
+    </div>
+    <div class="formato-base"><b>Cuadro de fechas</b>
+        <label for="date">Ingrese su fecha de nacimiento</label>
+        <input type="date" name="" id="date">
+    </div>
+    <div class="formato-submit"><b>Cuando este deacuerdo con los datos ingresados, pulse enviar</b>
+        <input type="submit" name="Enviar" id="submit" onclick="validar()">
+    </div>
+    <script>
+        function validar(){
+            const campos = [
+            {id: "texto", label: "texto"},
+            {id: "password", label: "password"},
+            {id: "email", label: "email"},
+            {id: "URL", label: "URL"},
+            {id: "numero", label: "numero"},
+            {id: "date", label: "date"}
+            ]
+            for (let i=0; i<campos.length; i++){
+                const campo = document.getElementById(campos[i].id);
+                if (campo.value.trim() ===""){
+                    alert(`El campo ${campos[i].label} es obligatorio`);
+                    campo.focus();
+                    return false;
+                }
+            }
+            alert("Formulario enviado correctamente")
+        }
+    </script>
+</body>
+</html>
